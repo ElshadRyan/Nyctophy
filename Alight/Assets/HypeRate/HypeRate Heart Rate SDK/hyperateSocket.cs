@@ -9,7 +9,9 @@ using NativeWebSocket;
 
 public class hyperateSocket : MonoBehaviour
 {
-	// Put your websocket Token ID here
+    // Put your websocket Token ID here
+    public int heartBeat;
+
     public string websocketToken = "lezkLsR4LMEbL6k3tNBpTXdtpIKhCOZhVCfJUqoFeXE6nAARt1Bvq2WLDOEBX65q"; //You don't have one, get it here https://www.hyperate.io/api
     public string hyperateID = "489F"; //"internal-testing";
 	// Textbox to display your heart rate in
@@ -44,11 +46,14 @@ public class hyperateSocket : MonoBehaviour
         // getting the message as a string
             var message = System.Text.Encoding.UTF8.GetString(bytes);
             var msg = JObject.Parse(message);
+            
+
 
             if (msg["event"].ToString() == "hr_update")
             {
                 // Change textbox text into the newly received Heart Rate (integer like "86" which represents beats per minute)
-                textBox.text = (string) msg["payload"]["hr"];
+                textBox.text = (string)msg["payload"]["hr"];           
+                heartBeat = (int)msg["payload"]["hr"];
             }
         };
 
