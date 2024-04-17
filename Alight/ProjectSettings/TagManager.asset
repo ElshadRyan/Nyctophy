@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< Updated upstream
   tags: []
+=======
+  tags:
+  - PickUpInteract
+  - Door
+  - Lever
+  - Fuse
+  - FuseBox
+  - Meteor
+  - Lamp
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
