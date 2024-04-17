@@ -46,7 +46,7 @@ public class PickUpScript : MonoBehaviour
                 }
                 else if (hit.transform.gameObject.tag == "FuseBox")
                 {
-                    PlaceObject(hit.transform.gameObject);
+                    Placing(hit.transform.gameObject);
                 }
                 else                   
                 {
@@ -72,7 +72,7 @@ public class PickUpScript : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
             {
                 //make sure pickup tag is attached                
-                if (hit.transform.GetComponentInParent<interaction>())
+                if (hit.transform.GetComponentInParent<interaction>() && hit.transform.GetComponentInParent<interaction>().canInteract)
                 {
                     //pass in object hit into the PickUpObject function
                     GameObject parentGameObject = hit.transform.parent.gameObject;
@@ -102,14 +102,24 @@ public class PickUpScript : MonoBehaviour
         }
     }
 
-    void PlaceObject(GameObject gameObject)
+    void Placing(GameObject gameObject)
     {
         if(heldObj != null)
         {
             if(heldObj.GetComponent<interaction>())
-            {
+            {                
                 FuseBox fuseBox = gameObject.GetComponentInParent<FuseBox>();
-                fuseBox.PlaceFuse(heldObj.GetComponent<interaction>());
+
+                if(heldObj.GetComponent<interaction>().GetInteractionSO() == fuseBox.fuseInteractionSO)
+                {
+                    fuseBox.PlaceObject(heldObj);
+                    heldObj.GetComponent<interaction>().canInteract = false;
+                    heldObj = null;
+                }
+                else
+                {
+                    DropObject();
+                }
             }
         }
     }
@@ -123,6 +133,12 @@ public class PickUpScript : MonoBehaviour
             heldObjRb.isKinematic = true;
             heldObj.transform.parent = holdPos.transform; //parent object to holdposition
             children.transform.position = heldObj.transform.position;
+
+            heldObj.transform.position = Vector3.zero;
+            heldObj.transform.rotation = Quaternion.identity;
+            children.transform.position = Vector3.zero;
+            children.transform.rotation = Quaternion.identity;
+
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponentInChildren<Collider>(), player.GetComponent<Collider>(), true);
@@ -132,10 +148,15 @@ public class PickUpScript : MonoBehaviour
     {
         //re-enable collision with player
         Physics.IgnoreCollision(heldObj.GetComponentInChildren<Collider>(), player.GetComponentInChildren<Collider>(), false);
+        heldObj.GetComponentInChildren<Rigidbody>().freezeRotation = false;
+        heldObj.GetComponentInChildren<Rigidbody>().useGravity = true;
+
         heldObj.layer = 0; //object assigned back to default layer
         heldObjRb.isKinematic = false;
         heldObj.transform.parent = null; //unparent object
         heldObj = null; //undefine game object
+
+        
     }
     void MoveObject()
     {
