@@ -7,8 +7,9 @@ public class LightIntensity : MonoBehaviour
     [SerializeField] private hyperateSocket HS;
     [SerializeField] private Light lightIntensity;
 
-    private int heartBeat;
-
+    private float heartBeat;
+    private float maxHeartBeat = 180f;
+    private float minHeartBeat = 60f;
 
     void Start()
     {
@@ -29,13 +30,6 @@ public class LightIntensity : MonoBehaviour
 
     void IntensityLight()
     {
-        if(heartBeat < 100)
-        {
-            lightIntensity.intensity = .8f;
-        }
-        else
-        {
-            lightIntensity.intensity = .5f;
-        }
+        lightIntensity.intensity = 1 - ((heartBeat - minHeartBeat) / (maxHeartBeat - minHeartBeat));
     }
 }
