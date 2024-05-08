@@ -112,9 +112,11 @@ public class PickUpScript : MonoBehaviour
 
                 if(heldObj.GetComponent<interaction>().GetInteractionSO() == fuseBox.fuseInteractionSO)
                 {
-                    fuseBox.PlaceObject(heldObj);
-                    heldObj.GetComponent<interaction>().canInteract = false;
-                    heldObj = null;
+                    if(fuseBox.anchorPoint.childCount < 1)
+                    {
+                        fuseBox.PlaceObject(heldObj);
+                        heldObj = null;
+                    }
                 }
                 else
                 {
@@ -134,10 +136,10 @@ public class PickUpScript : MonoBehaviour
             heldObj.transform.parent = holdPos.transform; //parent object to holdposition
             children.transform.position = heldObj.transform.position;
 
-            heldObj.transform.position = Vector3.zero;
-            heldObj.transform.rotation = Quaternion.identity;
-            children.transform.position = Vector3.zero;
-            children.transform.rotation = Quaternion.identity;
+            heldObj.transform.position = holdPos.transform.position;
+            heldObj.transform.rotation = holdPos.transform.rotation;
+            children.transform.position = heldObj.transform.position;
+            children.transform.rotation = heldObj.transform.rotation;
 
             heldObj.layer = LayerNumber; //change the object layer to the holdLayer
             //make sure object doesnt collide with player, it can cause weird bugs

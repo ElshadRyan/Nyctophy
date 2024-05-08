@@ -13,6 +13,7 @@ public class player : MonoBehaviour
 
     Vector3 move = Vector3.zero;
 
+    float gravity = 9.8f;
     public GameObject rightHand;
     public int speed;
     public float lookSpeed = 2f;
@@ -32,6 +33,7 @@ public class player : MonoBehaviour
 
     void Update()
     {
+        Gravity();
         if(canMove)
         {
             PlayerMove();
@@ -61,5 +63,9 @@ public class player : MonoBehaviour
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
     }
 
+    void Gravity()
+    {
+        CC.Move(Vector3.down * gravity * Time.deltaTime);
+    }
     
 }

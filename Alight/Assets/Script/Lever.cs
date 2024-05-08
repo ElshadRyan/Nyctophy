@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
-
+    GameManager gm;
     public bool start = false;
     public bool finish = false;
     public bool fail = false;
@@ -12,11 +12,12 @@ public class Lever : MonoBehaviour
     public GameObject lever;
     public player player;
 
-    float addAngle = 5f;
+    float addAngle = 10f;
     float minAngle = 10f;
     float currAnggle;
     private void Start()
     {
+        gm = GameManager.instance;
     }
     void Update()
     {
@@ -71,6 +72,7 @@ public class Lever : MonoBehaviour
 
         if(finish)
         {
+            gm.startTheChalenge = true;
             Debug.Log("yeyyy");
             finish = false;
         } 

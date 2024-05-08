@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class LightIntensity : MonoBehaviour
 {
+    GameManager gm;
     [SerializeField] private hyperateSocket HS;
     [SerializeField] private Light lightIntensity;
+    [SerializeField] private bool playerLamps;
+
 
     private float heartBeat;
     private float maxHeartBeat = 180f;
@@ -13,7 +16,7 @@ public class LightIntensity : MonoBehaviour
 
     void Start()
     {
-        
+        gm = GameManager.instance;
     }
 
     void Update()
@@ -25,11 +28,22 @@ public class LightIntensity : MonoBehaviour
     void TakingHeartBeat()
     {
         heartBeat = HS.heartBeat;
-        Debug.Log(heartBeat);
     }
 
     void IntensityLight()
     {
-        lightIntensity.intensity = 1 - ((heartBeat - minHeartBeat) / (maxHeartBeat - minHeartBeat));
+        if(gm.startTheChalenge)
+        {
+            lightIntensity.intensity = 1 - ((heartBeat - minHeartBeat) / (maxHeartBeat - minHeartBeat));
+        }
+        else if(playerLamps)
+        {
+            lightIntensity.intensity = 1;
+        }    
+        else if(!playerLamps)
+        {
+            lightIntensity.intensity = 0;
+        }
+        
     }
 }
