@@ -73,7 +73,10 @@ public class Lever : MonoBehaviour
         if(finish)
         {
             gm.startTheChalenge = true;
-            Debug.Log("yeyyy");
+            gm.genIsCompleted = true;
+            gm.nextChalenge++;
+            Debug.Log("Yes");
+
             finish = false;
         } 
         

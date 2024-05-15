@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PickUpScript : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI pickPlaceText;
     public GameObject player;
     public Transform holdPos;
     //if you copy from below this point, you are legally required to like the video
@@ -16,6 +18,7 @@ public class PickUpScript : MonoBehaviour
     private int LayerNumber; //layer index
     private bool isOpen = false;
     private RaycastHit hit;
+    GameManager gm;
     
 
 
@@ -26,6 +29,7 @@ public class PickUpScript : MonoBehaviour
     //MouseLookScript mouseLookScript;
     void Start()
     {
+        gm = GameManager.instance;
         LayerNumber = LayerMask.NameToLayer("HoldLayer"); //if your holdLayer is named differently make sure to change this ""
 
         //mouseLookScript = player.GetComponent<MouseLookScript>();
@@ -59,10 +63,50 @@ public class PickUpScript : MonoBehaviour
             }
             
         }
-        
+        TextPopUP();
+
+
     }
 
-    
+    private void TextPopUP()
+    {
+        player Playercs = player.GetComponent<player>();
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+        {
+            if(hit.transform.gameObject.tag == "PickUpInteract")
+            {
+                pickPlaceText.gameObject.SetActive(true);
+                pickPlaceText.text = "Press E to interact";
+            }
+            else if(hit.transform.gameObject.tag == "FuseBox" && heldObj != null)
+            {
+                pickPlaceText.gameObject.SetActive(true);
+                pickPlaceText.text = "Press E to place object";
+            }
+            else if(hit.transform.gameObject.tag == "Lever")
+            {
+                if(!Playercs.canMove)
+                {
+                    pickPlaceText.gameObject.SetActive(true);
+                    pickPlaceText.text = "Spam Space to turn the lever";
+                }
+                else if(gm.nextChalenge == 0)
+                {
+                    pickPlaceText.gameObject.SetActive(true);
+                    pickPlaceText.text = "Press E to interact";
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                pickPlaceText.gameObject.SetActive(false);
+            }
+        }
+    }
 
     void PickUpObj()
     {
@@ -114,6 +158,7 @@ public class PickUpScript : MonoBehaviour
                 {
                     if(fuseBox.anchorPoint.childCount < 1)
                     {
+                        Debug.Log("Masuk");
                         fuseBox.PlaceObject(heldObj);
                         heldObj = null;
                     }
@@ -241,8 +286,6 @@ public class PickUpScript : MonoBehaviour
         
         Playercs.canMove = false;
         Levercs.start = true;
-
-        
 
     }
 }
