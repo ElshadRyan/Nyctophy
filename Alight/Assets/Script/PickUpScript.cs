@@ -36,7 +36,7 @@ public class PickUpScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0))
         {
             if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
             {
@@ -76,13 +76,18 @@ public class PickUpScript : MonoBehaviour
         {
             if(hit.transform.gameObject.tag == "PickUpInteract")
             {
-                pickPlaceText.gameObject.SetActive(true);
-                pickPlaceText.text = "Press E to interact";
+                interaction interaction = GetComponentInParent<interaction>();
+                if(interaction.canInteract)
+                {
+                    pickPlaceText.gameObject.SetActive(true);
+                    pickPlaceText.text = "Left click to interact";
+                }
+                
             }
             else if(hit.transform.gameObject.tag == "FuseBox" && heldObj != null)
             {
                 pickPlaceText.gameObject.SetActive(true);
-                pickPlaceText.text = "Press E to place object";
+                pickPlaceText.text = "leftclick to place object";
             }
             else if(hit.transform.gameObject.tag == "Lever")
             {
@@ -94,7 +99,7 @@ public class PickUpScript : MonoBehaviour
                 else if(gm.nextChalenge == 0)
                 {
                     pickPlaceText.gameObject.SetActive(true);
-                    pickPlaceText.text = "Press E to interact";
+                    pickPlaceText.text = "Left click to interact";
                 }
                 else
                 {

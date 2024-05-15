@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         {
             lampsIsCompleted = true;
         }
-        else if(lampsIsCompleted)
+        if(lampsIsCompleted)
         {
             SceneManager.LoadScene("MainMenuFPS");
         }
