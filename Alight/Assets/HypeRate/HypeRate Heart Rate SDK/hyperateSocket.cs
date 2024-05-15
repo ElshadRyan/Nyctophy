@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-using Unity.Plastic.Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
+//using Unity.Plastic.Newtonsoft.Json.Linq;
 using NativeWebSocket;
 
 public class hyperateSocket : MonoBehaviour
