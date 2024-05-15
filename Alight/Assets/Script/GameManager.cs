@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] lightbulbSocket, fuseSocket;
     public GameObject lightbulb, fuse, fuseSpawnPoint, lightbulbSpawnPoint;
 
-    public TextMeshProUGUI taskText;
+    //public TextMeshProUGUI taskText;
     public string[] taskWord;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        taskText.text = taskWord[0];
+        //taskText.text = taskWord[0];
     }
     private void Update()
     {
@@ -38,11 +38,11 @@ public class GameManager : MonoBehaviour
     {
         if(nextChalenge == 1)
         {
-            taskText.text = taskWord[1] + " " + taskCount.ToString() + "/" + fuseSocket.Length.ToString();
+            //taskText.text = taskWord[1] + " " + taskCount.ToString() + "/" + fuseSocket.Length.ToString();
         }
         else if(nextChalenge == 2)
         {
-            taskText.text = taskWord[2] + " " + taskCount.ToString() + "/" + lightbulbSocket.Length.ToString();
+            //taskText.text = taskWord[2] + " " + taskCount.ToString() + "/" + lightbulbSocket.Length.ToString();
         }        
     }
     public void GeneratorChalengeIsCompleted()
