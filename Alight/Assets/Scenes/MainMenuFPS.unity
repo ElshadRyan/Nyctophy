@@ -860,7 +860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nycthopy
+  m_text: Nyctophy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2087b341805c056418dee2bef1c9c322, type: 2}
   m_sharedMaterial: {fileID: 6010321705468761068, guid: 2087b341805c056418dee2bef1c9c322, type: 2}
