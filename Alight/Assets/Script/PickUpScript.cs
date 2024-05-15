@@ -76,7 +76,7 @@ public class PickUpScript : MonoBehaviour
         {
             if(hit.transform.gameObject.tag == "PickUpInteract")
             {
-                interaction interaction = GetComponentInParent<interaction>();
+                interaction interaction = hit.transform.gameObject.GetComponentInParent<interaction>();
                 if(interaction.canInteract)
                 {
                     pickPlaceText.gameObject.SetActive(true);
@@ -87,7 +87,7 @@ public class PickUpScript : MonoBehaviour
             else if(hit.transform.gameObject.tag == "FuseBox" && heldObj != null)
             {
                 pickPlaceText.gameObject.SetActive(true);
-                pickPlaceText.text = "leftclick to place object";
+                pickPlaceText.text = "Left click to place object";
             }
             else if(hit.transform.gameObject.tag == "Lever")
             {
