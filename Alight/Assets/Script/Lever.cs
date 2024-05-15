@@ -9,9 +9,11 @@ public class Lever : MonoBehaviour
     public bool finish = false;
     public bool fail = false;
     public bool isMoving = false;
+    public bool done = false;
     public GameObject lever;
     public player player;
 
+    
     float addAngle = 10f;
     float minAngle = 10f;
     float currAnggle;
@@ -77,6 +79,7 @@ public class Lever : MonoBehaviour
             gm.nextChalenge++;
             Debug.Log("Yes");
 
+            done = true;
             finish = false;
         } 
         

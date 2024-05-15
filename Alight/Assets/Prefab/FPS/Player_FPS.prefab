@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f9c1f4c583cf0a4495aa5af975af8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickPlaceText: {fileID: 0}
   player: {fileID: 2032054800526355983}
   holdPos: {fileID: 4954136778715057576}
   throwForce: 500
@@ -169,7 +170,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1
-  m_Radius: 0.1
+  m_Radius: 0.001
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -192,7 +193,7 @@ MonoBehaviour:
   rightHand: {fileID: 6814754174220789763}
   speed: 5
   lookSpeed: 2
-  lookXLimit: 45
+  lookXLimit: 90
   canMove: 1
 --- !u!1 &2621619563311068125
 GameObject:
@@ -914,6 +915,18 @@ PrefabInstance:
     - target: {fileID: 1078385722042641787, guid: a65b8fa1aaa11dd468eb17e285e612c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674816456262772962, guid: a65b8fa1aaa11dd468eb17e285e612c9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674816456262772962, guid: a65b8fa1aaa11dd468eb17e285e612c9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674816456262772962, guid: a65b8fa1aaa11dd468eb17e285e612c9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8113208
       objectReference: {fileID: 0}
     - target: {fileID: 7109725092031420744, guid: a65b8fa1aaa11dd468eb17e285e612c9, type: 3}
       propertyPath: m_Name

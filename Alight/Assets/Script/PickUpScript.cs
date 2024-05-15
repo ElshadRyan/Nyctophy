@@ -282,10 +282,15 @@ public class PickUpScript : MonoBehaviour
     {
         player Playercs = player.GetComponent<player>();
         Lever Levercs = lever.GetComponentInParent<Lever>();
-        Levercs.player = Playercs;
+
+        if(!Levercs.done)
+        {
+            Levercs.player = Playercs;
+
+            Playercs.canMove = false;
+            Levercs.start = true;
+        }
         
-        Playercs.canMove = false;
-        Levercs.start = true;
 
     }
 }
