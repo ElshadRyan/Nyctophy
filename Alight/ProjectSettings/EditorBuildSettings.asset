@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenuFPS.unity
-    guid: 7c27878cef77c4640953ea8f7e4a939b
+    path: Assets/Scenes/MainMenuVR.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/FPSLevel.unity
-    guid: 5d3dbb96010c8d44a93d52a12d04ebc9
+    path: Assets/Scenes/VRLevel.unity
+    guid: 9a1b83dc4fd74f5488429122d0769646
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b25d119a382f509468a40d737d271b81, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0787f093a38337b428f407a053064e7f, type: 2}

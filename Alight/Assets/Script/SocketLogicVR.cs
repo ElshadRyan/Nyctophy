@@ -15,10 +15,12 @@ public class SocketLogicVR : MonoBehaviour
     public void On()
     {
         gm.chalengeCount++;
+        gm.taskCount++;
     }
 
     public void Off()
     {
         gm.chalengeCount--;
+        gm.taskCount--;
     }
 }
