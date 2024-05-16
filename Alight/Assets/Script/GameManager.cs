@@ -6,7 +6,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-   
+    public float timer = 0f;
+    public int interval = 5;
 
     public static GameManager instance;
     public bool startTheChalenge = false;
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour
     {
         CheckingIfTaskIsComplete();
         TextTask();
+    }
+
+    public void Heartbeat()
+    {
+
     }
 
     public void TextTask()

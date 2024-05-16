@@ -10,15 +10,17 @@ using NativeWebSocket;
 
 public class hyperateSocket : MonoBehaviour
 {
+    
     // Put your websocket Token ID here
     public int heartBeat;
-
+    
     public string websocketToken = "lezkLsR4LMEbL6k3tNBpTXdtpIKhCOZhVCfJUqoFeXE6nAARt1Bvq2WLDOEBX65q"; //You don't have one, get it here https://www.hyperate.io/api
     public string hyperateID = "B74A"; //"internal-testing";
 	// Textbox to display your heart rate in
     Text textBox;
 	// Websocket for connection with Hyperate
     WebSocket websocket;
+    
     async void Start()
     {
         textBox = GetComponent<Text>();
