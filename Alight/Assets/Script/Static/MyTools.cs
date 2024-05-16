@@ -4,15 +4,15 @@ using UnityEngine;
 public static class MyTools 
 {
     
-    //[MenuItem("My Tools/Add Defaults To Report %F1")] 
+    [MenuItem("My Tools/Add Defaults To Report %F1")] 
     static void DEV_AppendDefaultToReport()
     {
-        CSVManager.AppendToReport(new string("Heartbeat"));
+        CSVManager.AppendToReportCH(new string("Heartbeat"));
         //EditorApplication.Beep();
         Debug.Log("Report Updated Successfully");
     }
 
-    //[MenuItem("My Tools/Reset Report %F12")]
+    [MenuItem("My Tools/Reset Report %F12")]
     static void DEV_ResetReport()
     {
         CSVManager.CreateReport();
@@ -22,7 +22,7 @@ public static class MyTools
 
     public static void DEV_AppendSpesificsToReport(string strings)
     {
-        CSVManager.AppendToReport(strings);
+        CSVManager.AppendToReportHB(strings);
         //EditorApplication.Beep();
         Debug.Log("Report Updated Successfully");
     }

@@ -7,13 +7,18 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public float timer = 0f;
-    public int interval = 5;
+    public float interval = 5f;
+    public float cheatInterval = 2f;
+    public float numToCheckOnce;
+    public hyperateSocket hyperate;
+    public GameObject debugMode;    
 
     public static GameManager instance;
     public bool startTheChalenge = false;
     public int chalengeCount = 0;
     public int taskCount = 0;
     public int nextChalenge = 0;
+    public float heart;
     public bool genIsCompleted, fuseIsCompleted, lampsIsCompleted = false;
     public GameObject[] lightbulbSocket, fuseSocket;
     public GameObject lightbulb, fuse, fuseSpawnPoint, lightbulbSpawnPoint;
@@ -21,6 +26,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI taskText;
     public string[] taskWord;
 
+    bool isOpen = false;
     private void Awake()
     {
         instance = this;
@@ -33,11 +39,65 @@ public class GameManager : MonoBehaviour
     {
         CheckingIfTaskIsComplete();
         TextTask();
+        Heartbeat();
+        DebugMode();
+        CheatKode();
     }
 
+    void CheatKode()
+    {
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            if(Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if(nextChalenge == 0)
+                {
+                    startTheChalenge = true;
+                    genIsCompleted = true;
+                    nextChalenge++;
+                }
+                else if (nextChalenge == 1)
+                {
+                    fuseIsCompleted = true;
+                    nextChalenge++;
+                }
+                
+            }
+        }
+    }
+    public void DebugMode()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.F3))
+        {
+            if(!isOpen)
+            {
+                debugMode.SetActive(true);
+                isOpen = true;
+            }
+            else
+            {
+                debugMode.SetActive(false);
+                isOpen = false;
+            }
+        }
+    }
     public void Heartbeat()
     {
+        heart = hyperate.heartBeat;
+        timer += Time.deltaTime;
 
+        if(Mathf.Approximately(0, Mathf.Round(timer)%interval))
+        {
+            if (numToCheckOnce != Mathf.Round(timer))
+            {
+                CSVManager.AppendToReportHB(heart.ToString());
+                numToCheckOnce = Mathf.Round(timer);
+                Debug.Log("berhasil");
+            }
+        }
+
+        
     }
 
     public void TextTask()
@@ -88,6 +148,7 @@ public class GameManager : MonoBehaviour
         }
         if(lampsIsCompleted)
         {
+            CSVManager.AppendToReportCH("Kelar di detik" + ";" + Mathf.Round(timer).ToString());
             SceneManager.LoadScene("MainMenuFPS");
         }
 

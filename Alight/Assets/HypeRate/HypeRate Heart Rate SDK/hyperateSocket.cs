@@ -55,8 +55,9 @@ public class hyperateSocket : MonoBehaviour
             if (msg["event"].ToString() == "hr_update")
             {
                 // Change textbox text into the newly received Heart Rate (integer like "86" which represents beats per minute)
-                //textBox.text = (string)msg["payload"]["hr"];           
+                //textBox.text = (string)msg["payload"]["hr"];
                 heartBeat = (int)msg["payload"]["hr"];
+                Debug.Log(heartBeat);
             }
         };
 

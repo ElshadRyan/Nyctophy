@@ -16,11 +16,14 @@ public class SocketLogicVR : MonoBehaviour
     {
         gm.chalengeCount++;
         gm.taskCount++;
+        CSVManager.AppendToReportCH("Enter" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
     }
 
     public void Off()
     {
         gm.chalengeCount--;
         gm.taskCount--;
+        CSVManager.AppendToReportCH("Out" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
+
     }
 }

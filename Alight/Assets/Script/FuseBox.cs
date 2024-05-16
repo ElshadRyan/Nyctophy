@@ -42,6 +42,8 @@ public class FuseBox : MonoBehaviour
 
             gm.chalengeCount++;
             gm.taskCount++;
+
+            CSVManager.AppendToReportCH("Enter" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
         }
 
 

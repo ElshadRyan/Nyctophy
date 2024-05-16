@@ -170,11 +170,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 256325954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da35206656ff461f9ea567f58b84144, type: 3}
+  m_Script: {fileID: 11500000, guid: b2c3c719b2b988848bdcb8d5d2142f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartBeat: 0
   websocketToken: lezkLsR4LMEbL6k3tNBpTXdtpIKhCOZhVCfJUqoFeXE6nAARt1Bvq2WLDOEBX65q
-  hyperateID: 489F
+  hyperateID: B74A
 --- !u!114 &256325958
 MonoBehaviour:
   m_ObjectHideFlags: 0

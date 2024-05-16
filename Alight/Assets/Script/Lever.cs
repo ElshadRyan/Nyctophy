@@ -79,6 +79,8 @@ public class Lever : MonoBehaviour
             gm.nextChalenge++;
             Debug.Log("Yes");
 
+            CSVManager.AppendToReportCH("Enter" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
+
             done = true;
             finish = false;
         } 

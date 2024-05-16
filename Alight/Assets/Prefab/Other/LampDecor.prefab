@@ -99,18 +99,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2447726087470615953, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2447726087470615953, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
+      propertyPath: m_Shadows.m_NormalBias
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108773515094024895, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
+      propertyPath: HS
+      value: 
+      objectReference: {fileID: 6661954922542498111}
+    - target: {fileID: 7108773515094024895, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
+      propertyPath: playerLamps
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1645553243365751404, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8190791103036519137, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6661954922542498111}
   m_SourcePrefab: {fileID: 100100000, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
 --- !u!4 &264971158436636897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1929293277742142714, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
   m_PrefabInstance: {fileID: 1831671880814722075}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7548295494425087738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8190791103036519137, guid: a8c4fde5f4b2f1a499d08a4bf9033eab, type: 3}
+  m_PrefabInstance: {fileID: 1831671880814722075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6661954922542498111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548295494425087738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c3c719b2b988848bdcb8d5d2142f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartBeat: 0
+  websocketToken: lezkLsR4LMEbL6k3tNBpTXdtpIKhCOZhVCfJUqoFeXE6nAARt1Bvq2WLDOEBX65q
+  hyperateID: B74A
 --- !u!1001 &8432575409200975721
 PrefabInstance:
   m_ObjectHideFlags: 0

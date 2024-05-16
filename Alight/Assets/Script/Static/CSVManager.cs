@@ -5,17 +5,23 @@ public static class CSVManager
 {
 
     private static string reportDirectoryName = "Report";
-    private static string reportFileName = "Heartbeat Report.csv";
+    private static string reportHeartbeatName = "Heartbeat Report.csv";
+    private static string reportCompletedChalengesName = "Chalenge Report.csv";
     private static string reportSeperator = ";";
-    private static string reportHeader = "Heart Beat";
-    private static string timeStampHeader = "Time Stamp";
+    private static string reportHeaderHB = "Heart Beat";
+    private static string[] reportHeaderCH = new string[3]
+    {
+        "Status Chalenge",
+        "Kode Chalenge",
+        "Waktu Selesai/Keluar"
+    };
 
     #region Interactions
-    public static void AppendToReport(string strings)
+    public static void AppendToReportHB(string strings)
     {
         VerifyDirectory();
         VerifyFile();
-        using (StreamWriter sw = File.AppendText(GetFilePath()))
+        using (StreamWriter sw = File.AppendText(GetHeartbeatFilePath()))
         {
             string finalString = "";
             if(finalString != "")
@@ -26,7 +32,26 @@ public static class CSVManager
             {
                 finalString += strings;
             }
-            finalString += reportSeperator + GetTimeStamp();
+            sw.WriteLine(finalString);
+
+        }
+    }
+
+    public static void AppendToReportCH(string strings)
+    {
+        VerifyDirectory();
+        VerifyFile();
+        using (StreamWriter sw = File.AppendText(GetCompletedChalengesFilePath()))
+        {
+            string finalString = "";
+            if (finalString != "")
+            {
+                finalString += reportSeperator;
+            }
+            else
+            {
+                finalString += strings;
+            }
             sw.WriteLine(finalString);
 
         }
@@ -35,7 +60,7 @@ public static class CSVManager
     public static void CreateReport()
     {
         VerifyDirectory();
-        using (StreamWriter sw = File.CreateText(GetFilePath()))
+        using (StreamWriter sw = File.CreateText(GetHeartbeatFilePath()))
         {
             string finalString = "";
             
@@ -45,9 +70,23 @@ public static class CSVManager
             }
             else
             {
-                finalString += reportHeader;
+                finalString += reportHeaderHB;
             }
-            finalString += reportSeperator + timeStampHeader;
+            sw.WriteLine(finalString);
+        }
+
+        using (StreamWriter sw = File.CreateText(GetCompletedChalengesFilePath()))
+        {
+            string finalString = "";
+            for (int i = 0; i<reportHeaderCH.Length; i++)
+            {
+                if (finalString != "")
+                {
+                    finalString += reportSeperator;
+                }
+                finalString += reportHeaderCH[i];
+                
+            }            
             sw.WriteLine(finalString);
         }
     }
@@ -66,11 +105,13 @@ public static class CSVManager
 
     static void VerifyFile()
     {
-        string file = GetFilePath();
-        if(!File.Exists(file))
+        string file = GetHeartbeatFilePath();
+        string file1 = GetCompletedChalengesFilePath();
+        if (!File.Exists(file) && !File.Exists(file1))
         {
             CreateReport();
         }
+
     }
     #endregion
 
@@ -80,14 +121,15 @@ public static class CSVManager
         return Application.dataPath + "/" + reportDirectoryName;
     }
 
-    static string GetFilePath()
+    static string GetHeartbeatFilePath()
     {
-        return GetDirectoryPath() + "/" + reportFileName;
+        return GetDirectoryPath() + "/" + reportHeartbeatName;
     }
 
-    static string GetTimeStamp()
+    static string GetCompletedChalengesFilePath()
     {
-        return System.DateTime.Now.ToString();
+        return GetDirectoryPath() + "/" + reportCompletedChalengesName;
     }
+        
     #endregion
 }
