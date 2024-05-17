@@ -1016,12 +1016,12 @@ MonoBehaviour:
   numToCheckOnce: 0
   hyperate: {fileID: 1225289641}
   debugMode: {fileID: 848785563261414305}
-  startTheChalenge: 1
+  startTheChalenge: 0
   chalengeCount: 0
   taskCount: 0
   nextChalenge: 0
   heart: 0
-  genIsCompleted: 1
+  genIsCompleted: 0
   fuseIsCompleted: 0
   lampsIsCompleted: 0
   lightbulbSocket:

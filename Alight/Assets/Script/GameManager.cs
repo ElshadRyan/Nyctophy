@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
             {
                 CSVManager.AppendToReportHB(heart.ToString());
                 numToCheckOnce = Mathf.Round(timer);
-                Debug.Log("berhasil");
             }
         }
 

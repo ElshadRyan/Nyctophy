@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     
     public void StartButtonFPS()
     {
+        CSVManager.CreateReport();
         SceneManager.LoadScene("FPSLevel");
     }
 

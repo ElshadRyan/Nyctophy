@@ -31,7 +31,6 @@ public class LightIntensity : MonoBehaviour
         if(gm.startTheChalenge)
         {
             lightIntensity.intensity = 1 - ((gm.heart - minHeartBeat) / (maxHeartBeat - minHeartBeat));
-            Debug.Log(gm.heart);
         }
         else if(playerLamps)
         {

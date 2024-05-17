@@ -44,6 +44,7 @@ public class GameStartMenu : MonoBehaviour
     public void StartGame()
     {
         HideAll();
+        CSVManager.CreateReport();
         SceneManager.LoadScene("VRLevel");
     }
 

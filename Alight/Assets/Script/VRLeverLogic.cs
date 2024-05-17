@@ -16,10 +16,16 @@ public class VRLeverLogic : MonoBehaviour
         gm.startTheChalenge = true;
         gm.genIsCompleted = true;
         gm.nextChalenge++;
+        CSVManager.AppendToReportCH("Enter" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
+
     }
 
     public void Off()
     {
+        gm.startTheChalenge = false;
+        gm.genIsCompleted = false;
+        gm.nextChalenge--;
+        CSVManager.AppendToReportCH("Enter" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
 
     }
 }
