@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class SocketLogicVR : MonoBehaviour
 {
     GameManager gm;
+    [SerializeField] private AudioSource SFX;
 
     private void Start()
     {
@@ -26,5 +27,10 @@ public class SocketLogicVR : MonoBehaviour
         CSVManager.AppendToReportCH("Out" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
         Debug.Log("Sumber Masalah!!!");
 
+    }
+
+    public void PlaySound()
+    {
+        SFX.Play();
     }
 }

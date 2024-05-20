@@ -148,7 +148,14 @@ public class GameManager : MonoBehaviour
         if(lampsIsCompleted)
         {
             CSVManager.AppendToReportCH("Kelar di detik" + ";" + Mathf.Round(timer).ToString());
-            SceneManager.LoadScene("MainMenuFPS");
+            if (CSVManager.isFPS)
+            {
+                SceneManager.LoadScene("MainMenuFPS");
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenuVR");
+            }
         }
 
         GeneratorChalengeIsCompleted();

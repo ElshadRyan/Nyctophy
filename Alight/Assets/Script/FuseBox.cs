@@ -8,6 +8,7 @@ public class FuseBox : MonoBehaviour
     public LightAfterPlace lighting;
     public Transform anchorPoint;
     public interactionSO fuseInteractionSO;
+    public AudioSource placedSound;
 
     private void Start()
     {
@@ -40,16 +41,17 @@ public class FuseBox : MonoBehaviour
             heldObject.GetComponentInChildren<Rigidbody>().freezeRotation = true;
             heldObject.GetComponentInChildren<Rigidbody>().useGravity = false;
 
+            AudioAfterPlaced();
             gm.chalengeCount++;
             gm.taskCount++;
 
             CSVManager.AppendToReportCH("Enter" + ";" + gm.chalengeCount.ToString() + ";" + Mathf.Round(gm.timer).ToString() + "Second");
-        }
-
-
-        
-                        
+        }                             
     }
 
-    
+    public void AudioAfterPlaced()
+    {
+        placedSound.Play();
+    }
+
 }

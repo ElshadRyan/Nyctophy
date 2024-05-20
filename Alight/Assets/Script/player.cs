@@ -8,6 +8,7 @@ public class player : MonoBehaviour
 {
     [SerializeField] private Transform interactorSource;
     [SerializeField] private float interactorRange;
+    [SerializeField] AudioSource walkingAudio;
     CharacterController CC;
     Camera playerCamera;
 
@@ -52,6 +53,11 @@ public class player : MonoBehaviour
         move = forward * moveX + right * moveY;
 
         CC.Move(move * Time.deltaTime);
+
+        if(move == Vector3.zero)
+        {
+            WalkSound();
+        }
     }
 
     void PlayerRotate()
@@ -68,4 +74,9 @@ public class player : MonoBehaviour
         CC.Move(Vector3.down * gravity * Time.deltaTime);
     }
     
+    void WalkSound()
+    {
+        walkingAudio.Play();
+    }
+
 }

@@ -10,12 +10,13 @@ public class GameStartMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject options;
     public GameObject about;
+    public GameObject howToPlay;
 
     [Header("Main Menu Buttons")]
     public Button startButton;
-    public Button optionButton;
-    public Button aboutButton;
     public Button quitButton;
+    public Button howToPlayButton;
+    public Button back;
 
     public List<Button> returnButtons;
 
@@ -24,15 +25,18 @@ public class GameStartMenu : MonoBehaviour
     {
         EnableMainMenu();
 
-        //Hook events
+        //Hook events;
         startButton.onClick.AddListener(StartGame);
         //optionButton.onClick.AddListener(EnableOption);
         //aboutButton.onClick.AddListener(EnableAbout);
+        howToPlayButton.onClick.AddListener(EnableHowToPlay);
         quitButton.onClick.AddListener(QuitGame);
 
         foreach (var item in returnButtons)
         {
             item.onClick.AddListener(EnableMainMenu);
+            item.onClick.AddListener(Back);
+
         }
     }
 
@@ -53,6 +57,7 @@ public class GameStartMenu : MonoBehaviour
         mainMenu.SetActive(false);
         options.SetActive(false);
         about.SetActive(false);
+
     }
 
     public void EnableMainMenu()
@@ -72,5 +77,18 @@ public class GameStartMenu : MonoBehaviour
         mainMenu.SetActive(false);
         options.SetActive(false);
         about.SetActive(true);
+    }
+
+    public void EnableHowToPlay()
+    {
+        mainMenu.SetActive(false);
+        howToPlay.SetActive(true);
+    }
+
+    public void Back()
+    {
+        options.SetActive(false);
+        about.SetActive(false);
+        howToPlay.SetActive(false);
     }
 }

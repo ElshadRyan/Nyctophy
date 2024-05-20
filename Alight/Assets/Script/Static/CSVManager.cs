@@ -3,6 +3,7 @@ using UnityEngine;
 
 public static class CSVManager 
 {
+    public static bool isFPS = false;
 
     private static string reportDirectoryName = "Report";
     private static string reportHeartbeatName = "Heartbeat Report.csv";
