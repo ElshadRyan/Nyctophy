@@ -58,8 +58,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (nextChalenge == 1)
                 {
-                    fuseIsCompleted = true;
-                    nextChalenge++;
+                    fuseIsCompleted = true;                    
                 }
                 
             }
@@ -145,11 +144,13 @@ public class GameManager : MonoBehaviour
         {
             lampsIsCompleted = true;
         }
-        if(lampsIsCompleted)
+        if(fuseIsCompleted)
         {
             CSVManager.AppendToReportCH("Kelar di detik" + ";" + Mathf.Round(timer).ToString());
             if (CSVManager.isFPS)
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 SceneManager.LoadScene("MainMenuFPS");
             }
             else

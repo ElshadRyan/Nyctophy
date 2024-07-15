@@ -30,11 +30,12 @@ public class LightIntensity : MonoBehaviour
     {
         if(gm.startTheChalenge)
         {
-            lightIntensity.intensity = 1 - ((gm.heart - minHeartBeat) / (maxHeartBeat - minHeartBeat));
+            //lightIntensity.intensity = 1 - ((gm.heart - minHeartBeat) / (maxHeartBeat - minHeartBeat));
+            lightIntensity.intensity = 0.8f;
         }
         else if(playerLamps)
         {
-            lightIntensity.intensity = 1;
+            lightIntensity.intensity = 0.8f;
         }    
         else if(!playerLamps)
         {
