@@ -59,6 +59,9 @@ To run **Nyctophy**, follow these steps:
 2. Build and run the application for desktop use.
 3. Navigate using keyboard and mouse inputs.
 
+### Contact
+elshad.ardiyanto@binus.ac.id
+
 ## License
 
 This project is licensed under the **Unlicense** — see the [Unlicense Website](https://unlicense.org/) or the UNLICENSE file for details.
